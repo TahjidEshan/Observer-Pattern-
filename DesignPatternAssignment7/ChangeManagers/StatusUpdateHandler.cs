@@ -1,7 +1,7 @@
-﻿using DesignPatternAssignment7.Products;
-
+﻿
 namespace DesignPatternAssignment7.ChangeManagers
 {
+    public delegate void StatusUpdate(string StatusUpdate);
     class StatusUpdateHandler
     {
         public int ProductId { get; set; }

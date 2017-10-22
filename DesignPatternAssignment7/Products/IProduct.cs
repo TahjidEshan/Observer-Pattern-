@@ -2,8 +2,6 @@
 
 namespace DesignPatternAssignment7.Products
 {
-    public delegate void StatusUpdate(string StatusUpdate);
-
     interface IProduct
     {
         int Id { get; set; }
