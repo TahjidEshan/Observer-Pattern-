@@ -7,7 +7,7 @@ namespace DesignPatternAssignment7.Users
         public int UserId { get; set; }
         public void Update(string value)
         {
-            Console.WriteLine(this.Name+ " with Id:"+this.UserId+" subscribed to "+value);
+            Console.WriteLine(this.Name+ " with Id:"+this.UserId+" is subscribed to "+value);
         }
     }
 }

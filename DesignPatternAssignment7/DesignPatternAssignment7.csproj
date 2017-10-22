@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChangeManagers\ChangeManager.cs" />
+    <Compile Include="ChangeManagers\StatusUpdateHandler.cs" />
     <Compile Include="Products\ConcreteProduct.cs" />
     <Compile Include="Products\Product.cs" />
     <Compile Include="Products\IProduct.cs" />

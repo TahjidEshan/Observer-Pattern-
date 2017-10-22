@@ -6,8 +6,6 @@ namespace DesignPatternAssignment7.Products
 
     interface IProduct
     {
-        event StatusUpdate StatusHandler;
-
         int Id { get; set; }
         string Name { get; set; }
         float Price { get; set; }
@@ -15,10 +13,10 @@ namespace DesignPatternAssignment7.Products
         float? Discount { get; set; }
 
         string Update();
-        void StartEvent(string s);
 
         void AttachObserver(IUser User);
         void DetachObserver(IUser User);
         void Notify();
+        void Notify(string s);
     }
 }

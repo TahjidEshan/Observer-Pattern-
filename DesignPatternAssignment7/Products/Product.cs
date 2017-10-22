@@ -5,11 +5,10 @@ namespace DesignPatternAssignment7.Products
 {
     abstract class Product:IProduct
     {
-        public event StatusUpdate StatusHandler = null;
-  
         private float _price;
         private int _amountInStock;
         private float? _discount;
+        private string message;
         public int Id { get; set; }
         public string Name { get; set; }
         public float Price
@@ -20,8 +19,9 @@ namespace DesignPatternAssignment7.Products
             }
             set
             {
+                this.message = "Update Message:Price Changed From "+ this._price+ " to "+ value + "\n";
                 this._price = value;
-                this.Notify();
+                this.Notify(this.Update() + this.message);
             }
         }
         public int AmountInStock
@@ -32,8 +32,9 @@ namespace DesignPatternAssignment7.Products
             }
             set
             {
+                this.message = "Update Message:Amount in Stock Changed From " + this._amountInStock + " to " + value + "\n";
                 this._amountInStock = value;
-                this.Notify();
+                this.Notify(this.Update() + this.message);
             }
         }
         public float? Discount
@@ -44,15 +45,16 @@ namespace DesignPatternAssignment7.Products
             }
             set
             {
+                this.message = "Update Message:Discount Changed From " + this._discount + " to " + value+"\n";
                 this._discount = value;
-                this.Notify();
+                this.Notify(this.Update() + this.message);
             }
         }
         
         public string Update()
         {
-            return "The Product "+Name+" With Id: "+Id+" has a price of "+ Price+". with discount "+Discount+
-                "\n There are currently "+AmountInStock+" Items in Stock";
+            return "The Product "+Name+" With Id: "+Id+" with a base price of "+ Price+". with discount "+Discount+
+                "\nThere are currently "+AmountInStock+" Items in Stock.\n";
         }
 
         public void AttachObserver(IUser User)
@@ -65,12 +67,12 @@ namespace DesignPatternAssignment7.Products
         }
         public void Notify()
         {
-            if (this.StatusHandler != null)  
-                ChangeManager.Notify(this);
+            ChangeManager.Notify(this);
         }
-        public void StartEvent(string str)
+        public void Notify(string message)
         {
-            StatusHandler(str);
+            ChangeManager.Notify(this.Id, message);
         }
+
     }
 }
